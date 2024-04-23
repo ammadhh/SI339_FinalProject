@@ -7,7 +7,7 @@ http \
   --session=./session.json \
   --form POST \
   "http://localhost:8000/accounts/" \
-  username=awdeorio \
+  username=ammadh \
   password=password \
   operation=login
 
