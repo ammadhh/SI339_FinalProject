@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>coolmedia</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <a href="{{ url_for('show_index')}}">
+                <img src="{{ url_for('static', filename = 'images/logo.png') }}" alt="logo" class="logo">
+            </a>
+            <h1>coolmedia</h1>
+
+            <div>
+                <a href="/explore/">explore</a>
+                <a href="{{ url_for('get_user', get_user_slug = logname) }}">{{ logname }}</a>
+            </div>
+        </div>
+
+        <h1>Followers</h1>
+        <div>
+            {% for follower in followers %}
+                <div class="container post">
+                    <div>
+                        <img src="{{ follower['user_img_url'] }}" alt="{{ follower['username'] }}" class="profile">
+                    </div>
+                    <div>
+                        <a href="{{ url_for('get_user', get_user_slug = follower['username']) }}">{{ follower['username'] }}</a>
+                    </div>
+                    <div>
+                        {% if follower['username'] != logname %}
+                            {% if follower['logname_follows_username'] %}
+                                following
+                                <form action="{{ url_for('follow_unfollow', target = url_for('get_user_followers', get_user_slug = username)) }}" method="post" enctype="multipart/form-data">
+                                    <input type="submit" name="unfollow" value="unfollow"/>
+                                    <input type="hidden" name="username" value="{{ follower['username'] }}"/>
+                                    <input type="hidden" name="operation" value="unfollow"/>
+                                  </form>
+                            {% else %}
+                                not following
+                                <form action="{{ url_for('follow_unfollow', target = url_for('get_user_followers', get_user_slug = username)) }}" method="post" enctype="multipart/form-data">
+                                    <input type="submit" name="follow" value="follow"/>
+                                    <input type="hidden" name="username" value="{{ follower['username'] }}"/>
+                                    <input type="hidden" name="operation" value="follow"/>
+                                </form>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

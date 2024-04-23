@@ -1,0 +1,58 @@
+body {
+    width: 800px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.profile {
+    width: 100px;
+    height: auto;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status {
+    display: flex;
+    align-items: left;
+    gap: 10px;
+}
+.post {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 20px;
+}
+
+.upload {
+    width: 100%;
+}
+
+.profile_page {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.comments {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.comment {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

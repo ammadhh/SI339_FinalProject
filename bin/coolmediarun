@@ -1,0 +1,15 @@
+#!/bin/bash
+# coolmediadb
+
+# Stop on errors
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+
+DATABASE=var/coolmedia.sqlite3
+if ! test -f "$DATABASE"; then
+    echo "Error: can't find database var/coolmedia.sqlite3"
+    echo "Try: ./bin/coolmediadb create"
+    exit 1
+fi
+npx webpack --watch &
+flask --app coolmedia --debug run --host 0.0.0.0 --port 8000

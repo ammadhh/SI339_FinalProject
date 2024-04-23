@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>coolmedia</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
+    </head>
+    <body>
+        
+        <div class="container">
+            <a href="{{ url_for('show_index')}}">
+                <img src="{{ url_for('static', filename = 'images/logo.png') }}" alt="logo" class="logo">
+            </a>
+            <h1>coolmedia</h1>
+
+            <div>
+                <a href="/explore/">explore</a>
+                <a href="{{ url_for('get_user', get_user_slug = logname) }}">{{ logname }}</a>
+            </div>
+        </div>
+
+        <div id="reactEntry">
+            Loading ...
+        </div>
+        <!-- Load JavaScript -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+    </body>
+</html>
